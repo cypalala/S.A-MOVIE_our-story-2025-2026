@@ -16,75 +16,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
-
-    <style>
-    #lockScreen {
-        position: fixed;
-        inset: 0;
-        z-index: 999999;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        background: #050505;
-        color: white;
-
-        text-align: center;
-    }
-
-    .lock-content {
-        padding: 30px;
-    }
-
-    .lock-icon {
-        font-size: 45px;
-        margin-bottom: 20px;
-    }
-
-    .lock-content h1 {
-        font-size: 32px;
-        margin-bottom: 10px;
-    }
-
-    .lock-content p {
-        color: #999;
-        margin-bottom: 25px;
-    }
-
-    #countdown {
-        font-size: 32px;
-        letter-spacing: 3px;
-        margin-bottom: 15px;
-    }
-
-    .lock-content small {
-        color: #666;
-    }
-</style>
     
 </head>
 
 
 <body>
     
-<!-- LOCK SCREEN -->
-<div id="lockScreen">
-    <div class="lock-content">
-        <div class="lock-icon">🔒</div>
-
-        <h1>S.A Movie</h1>
-
-        <p>
-            Something special is waiting for you...
-        </p>
-
-        <div id="countdown">00:00:00</div>
-
-        <small>Come back at midnight ❤️</small>
-    </div>
-</div>
-
     <!-- LOADING SCREEN -->
 
     <div id="loadingScreen">
@@ -761,39 +698,6 @@
 
     <script src="script.js"></script>
 
-<script>
-    const unlockTime = new Date();
-
-    // Tengah malam berikutnya
-    unlockTime.setHours(24, 0, 0, 0);
-
-    function checkTime() {
-        const now = new Date();
-        const difference = unlockTime - now;
-
-        if (difference <= 0) {
-            document.getElementById("lockScreen").style.display = "none";
-            return;
-        }
-
-        const hours = Math.floor(difference / (1000 * 60 * 60));
-        const minutes = Math.floor(
-            (difference % (1000 * 60 * 60)) / (1000 * 60)
-        );
-        const seconds = Math.floor(
-            (difference % (1000 * 60)) / 1000
-        );
-
-        document.getElementById("countdown").textContent =
-            String(hours).padStart(2, "0") + ":" +
-            String(minutes).padStart(2, "0") + ":" +
-            String(seconds).padStart(2, "0");
-    }
-
-    checkTime();
-    setInterval(checkTime, 1000);
-</script>
-    
 </body>
     
 </html>
